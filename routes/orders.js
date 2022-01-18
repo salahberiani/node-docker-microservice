@@ -84,8 +84,8 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const order = orders.find((item) => item.id === Number(req.params.id));
-  console.log(order);
-  res.json({ order });
+  if (order) res.json({ order });
+  else res.json({ message: 'Order not found' });
 });
 
 module.exports = router;

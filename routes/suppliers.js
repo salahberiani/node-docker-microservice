@@ -85,7 +85,8 @@ router.get('/', (req, res) => {
  */
 router.get('/:id', (req, res) => {
   const supplier = suppliers.find((item) => item.id === Number(req.params.id));
-  res.json({ supplier });
+  if (order) res.json({ supplier });
+  else res.json({ message: 'Supplier not found' });
 });
 
 module.exports = router;
